@@ -96,7 +96,8 @@ best_rmse <- select_best(rec_res, metric = "rmse")
 
 final_ridge <- finalize_workflow(rec_wf, best_rmse)
 # Print out results in test set
-last_fit(final_lasso, split = housing_split) %>%
+last_fit(final_ridge, split = housing_split) %>%
   collect_metrics() %>% print
 # show best RMSE
 top_rmse %>% print(n = 1)
+
