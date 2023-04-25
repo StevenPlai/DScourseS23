@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage{graphicx} 
+
+\title{Problem Set 10}
+\author{Steven Plaisance}
+\date{April 2023}
+
+\begin{document}
+
+\maketitle
+
+Before I begin, it's worth noting that my svm model was not finished training at the time of writing this document. The code is complete but I was not able to obtain results in time.
+
+The optimal parameters for the remaining models are listed in the table below. 
+\begin{table}[]
+\begin{tabular}{lll}
+Algorithm & Parameter       & Optimal Value \\
+logit     & penalty         & 1e-10         \\
+tree      & cost complexity & .001          \\
+tree      & tree depth      & 15            \\
+tree      & min n           & 10            \\
+nnet      & penalty         & 1e+00         \\
+nnet      & hidden units    & 1             \\
+knn       & neighbors       & 30           
+\end{tabular}
+\end{table}
+
+The out-of-sample performances were similar across each algorithm. The tree model scored the highest with a mean accuracy of .86 and knn scored the lowest with a mean of .84. 
+
+\end{document}

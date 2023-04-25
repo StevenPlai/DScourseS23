@@ -1,4 +1,3 @@
-library(tidyverse)
 library(tidymodels)
 library(magrittr)
 library(modelsummary)
@@ -8,6 +7,7 @@ library(kknn)
 library(nnet)
 library(kernlab)
 library(glmnet)
+library(tidyverse)
 library(magrittr)
 
 set.seed(100)
@@ -347,5 +347,6 @@ svm_ans %<>% left_join(svm_test %>% slice(1),by=c(".metric",".estimator")) %>%
 # combine answers
 #####################
 all_ans <- bind_rows(logit_ans,tree_ans,nnet_ans,knn_ans,svm_ans)
-datasummary_df(all_ans %>% select(-.metric,-.estimator,-mean,-n,-std_err),output="markdown") %>% print
+table <- datasummary_df(all_ans %>% select(-.metric,-.estimator,-mean,-n,-std_err),output="markdown")
+save_kable(table,file = "summaryTable.png",zoom=1.5)
 
